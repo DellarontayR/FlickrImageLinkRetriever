@@ -1,7 +1,18 @@
+.rounded{
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    padding: 20px;
+    /* width: 200px;
+    height: 150px; */
+}
 .background{
-
+    background-color:#edf8b1;
 }
 
 .flickrFeed{
-    
+    background-color:#edf8b1;
+}
+
+.flickrImage{
+
 }
