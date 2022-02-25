@@ -6,6 +6,9 @@ import './FlickrFeed';
 import FlickrFeed from './FlickrFeed';
 import Search from './Search';
 
+import {FlickrContext,FlickrProvider} from "./FlickrContext";
+
+
 function App() {
   return (
     <div className="App">
@@ -13,9 +16,6 @@ function App() {
 
       </Search>
 
-      <FlickrFeed>
-
-      </FlickrFeed>
     </div>
   );
 }

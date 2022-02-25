@@ -1,76 +1,144 @@
-import { Axios } from 'axios';
-import * as axios from 'axios';
+// import { Axios } from 'axios';
+import axios from 'axios';
 import './Search.css';
+import React from 'react';
+import FlickrFeed from './FlickrFeed';
 
 
-import React, { Component } from 'react';
-import { AxiosProvider, Request, Get, Delete, Head, Post, Put, Patch, withAxios } from 'react-axios'
+  
+// import xml2js Module
+import { parseString } from "xml2js"; 
 
+
+var Flickr = require('flickr-sdk');
+// var XMLParser =require('react-xml-parser');
 class Search extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            searchedUsername:null,
-            value: null,
+            searchedUsername:"",
+            user_id: null,
             flickrImages:null
         };
-        this.updateImages =this.updateImages.bind(this);
+        // this.updateImages =this.updateImages.bind(this);
+        this.handleChange =this.handleChange.bind(this);
+        this.getPhotos = this.getPhotos.bind(this);
+        this.checkState = this.checkState.bind(this);
     } 
-    getPhotos(){
-        const k = "1ad821a1f57b30ab4b753d761ddb57ed";
-        const userId = "39873962@N08";
-        const url ="http://api.flickr.com/services/rest/?method=flickr.people.getPublicPhotos&api_key="+k +"&user_id="+userId;
-        axios.get(url,).then((response)=>{
-            this.setState(state=>{
-                const images = state.flickrImages;
-                this.flickrImages = response;
-                console.log(this.flickrImages);
-            })
-        })
-    }
-    updateImages(e){
+    
+    handleChange(e){
+        this.setState({searchedUsername:e.target.value});
         e.preventDefault();
-        console.log("Submitted");
-        const k = "1ad821a1f57b30ab4b753d761ddb57ed";
-        const searchUrl = "https://www.flickr.com/services/rest/?method=flickr.people.findByUsername&"+k;
-        axios.get(searchUrl).then((response) => {
-            this.setState({
-                searchedUsername:response
+    }
+
+    checkState(e){
+        console.log(this.state);
+        e.preventDefault();        
+
+        // return this.state.flickrImages;
+
+    }
+
+    getPhotos(e){
+        let getFlickrImageURL = function(photo) {
+   
+            let url = `https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`;
+
+
+            // let url = `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${
+            //   photo.secret
+            // }`;
+            // if (size) {
+            //   // Configure image size
+            //   url += `_${size}`;
+            // }
+            // url += '.jpg';
+            return url;
+        };
+        const searched = this.state.searchedUsername;
+
+        console.log(searched);
+        const url =`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${process.env.REACT_APP_FLICKR_KEY}&tags=${searched}`;
+        var self = this;
+
+        // Flickr sdk api call
+        // var flickr = new Flickr(process.env.REACT_APP_FLICKR_KEY);
+        // flickr.photos.search({
+        // text: "Dellarontay"
+        // }).then(function (res) {
+        // console.log('Flickr photos retrieved', res.body);
+        // var imgs= res.body.photos.photo.map((photo) => {
+        //     return getFlickrImageURL(photo, 'q');
+        // }).then(()=>{
+        //     console.log(imgs);
+        //     self.setState({flikrImages:imgs});
+        // });
+
+        // }).catch(function (err) {
+        // console.error('Error retrieving Flikr photos', err);
+        // });
+
+        // Axios api call
+
+        axios.get(url).then(response=>{
+            console.log(response);
+
+            let val =parseString(response.data, function(err,results){
+                console.log(results);
+                let photos = [];
+                if(results.rsp.photos[0].photo){
+                    photos= results.rsp.photos[0].photo;
+                    photos = photos.slice(0, photos.length>=10? 10 :photos.length);
+
+                }
+                else{
+                    console.log("there are no results.")
+                }
+                
+
+                const imgs = photos.map((photo)=>{
+                    return getFlickrImageURL(photo.$);
+                });
+
+                self.setState({flickrImages:imgs});
             });
-          })
-          .catch((err) => {
-              console.log(this.state);
         })
 
-        return ()=>{
-            console.log(this.state.searchedUsername);
-            console.log(this.flickrImages);
-
-        }
-
-        // const searchedUsername = state.searchedUsername;
-        // this.searchedUsername = response;
-        // console.log(response);
-        // console.log(this.searchedUsername);
-
-
+        e.preventDefault();        
     }
 
     render(){
+        const imgs = this.state.flickrImages;
         return(
-            <form className="search rounded-bottom" action="/" method="get">
-                <label htmlFor="header-search">
-                    <span className="searchInfoText rounded">Search flickr photos</span>
-                </label>
-                <input
-                    type="text"
-                    id="header-search"
-                    placeholder="Search flickr photos"
-                    name="s" 
-                    className="searchInput rounded"
-                />
-                <button className="searchButton rounded" type="submit" onClick={this.updateImages}>Search</button>
-            </form>
+            <div>
+
+                <form className="search rounded-bottom" action="/" method="get">
+                    <label htmlFor="header-search">
+                        <span className="searchInfoText rounded">Search flickr photos</span>
+                    </label>
+                    <input
+                        type="text"
+                        id="header-search"
+                        placeholder="Search flickr photos"
+                        name="s" 
+                        className="searchInput rounded"
+                        value ={this.state.searchedUsername}
+                        onChange={this.handleChange}
+                    />
+                    <button className="searchButton rounded" type="submit" onClick={this.getPhotos}>Search</button>
+                    <button onClick={this.checkState}>check State</button>
+                </form>
+                
+                <div className='container justify-content-center'>
+                    <h1>Your Searched Images: </h1>
+                </div>
+                
+
+                <FlickrFeed imgs={imgs}>
+
+                </FlickrFeed>
+            </div>
+
         )
     }
 }

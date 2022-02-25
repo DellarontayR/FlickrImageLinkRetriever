@@ -1,26 +1,26 @@
-import React, { Component } from 'react';
-import { AxiosProvider, Request, Get, Delete, Head, Post, Put, Patch, withAxios } from 'react-axios'
+import React from 'react';
 import './FlickrFeed.css';
+
+
 class FlickrFeed extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            flickrImages: null,
-            imageSize: {width:'100px',height:'100px'}
+            imageSize: {width:'100%',height:'100%'}
         };
     } 
+    
     render(){
-        if(this.state.flickrImages){
+        const imgs = this.props.imgs;
+        if(imgs){
             return(
                 <div className="container">
-                    <div className="row">
-                        <ul>
-                            <li className="col-4">
-                                {this.state.flickrImages.map((image) => {
-                                    return <div style={this.state.imageSize} className="flickrImage rounded">{image}</div>;
-                                })}
-                            </li>
-                        </ul>
+                    <div className="">
+                        <div className="row">
+                            {imgs.map((image) => {
+                                return <div key={image} className="col-lg-6"> <img className='rounded' style={this.state.imageSize}  src={image} /> </div>;
+                            })}
+                        </div>
                     </div>
                 </div>
             )

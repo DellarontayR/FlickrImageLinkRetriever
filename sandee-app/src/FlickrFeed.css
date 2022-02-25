@@ -1,18 +1,11 @@
-.rounded{
+.rounded2{
     border-bottom-right-radius: 25px;
     border-bottom-left-radius: 25px;
-    padding: 20px;
+    border-radius:10px;
+    margin-top:10px;
+    margin-bottom:10px;
     /* width: 200px;
     height: 150px; */
 }
-.background{
-    background-color:#edf8b1;
-}
 
-.flickrFeed{
-    background-color:#edf8b1;
-}
 
-.flickrImage{
-
-}
