@@ -1,3 +1,19 @@
+<<<<<<< HEAD
+=======
+.rounded-bottom{
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    padding: 20px;
+    /* width: 200px;
+    height: 150px; */
+}
+.rounded2{
+    border-radius:25px;
+}
+.search{
+    background-color:#252525;
+}
+>>>>>>> 63dffee... update to base functionality.
 .searchInput{
 
 }

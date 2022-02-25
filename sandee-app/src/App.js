@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 
+<<<<<<< HEAD
 function App() {
   return (
     <div className="App">
@@ -18,6 +19,23 @@ function App() {
           Learn React
         </a>
       </header>
+=======
+import './Search';
+import './FlickrFeed';
+import FlickrFeed from './FlickrFeed';
+import Search from './Search';
+
+import {FlickrContext,FlickrProvider} from "./FlickrContext";
+
+
+function App() {
+  return (
+    <div className="App">
+      <Search>
+
+      </Search>
+
+>>>>>>> 63dffee... update to base functionality.
     </div>
   );
 }
