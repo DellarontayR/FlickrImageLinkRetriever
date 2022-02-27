@@ -1,6 +1,7 @@
 import './App.css';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 function App() {
   return (
     <div className="App">
@@ -28,15 +29,29 @@ import Search from './Search';
 function App() {
   return (
     <div className="App">
+=======
+import './Search';
+import './FlickrFeed';
+import Search from './Search';
+
+
+
+function App() {
+  return (
+    <div className="App">
+>>>>>>> 9e4d67d12be0560c431b93c541ee1e85437a099a
       <Search>
 
       </Search>
 
+<<<<<<< HEAD
 >>>>>>> 63dffee... update to base functionality.
+=======
+>>>>>>> 9e4d67d12be0560c431b93c541ee1e85437a099a
     </div>
   );
 }
 
-c
+
 
 export default App;

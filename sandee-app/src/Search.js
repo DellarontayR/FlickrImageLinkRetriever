@@ -1,9 +1,12 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 // import { Axios } from 'axios';
 =======
 >>>>>>> 9b76eec... cleanup and final project details
+=======
+>>>>>>> 9e4d67d12be0560c431b93c541ee1e85437a099a
 import axios from 'axios';
 import './Search.css';
 import React from 'react';
@@ -13,21 +16,35 @@ import FlickrFeed from './FlickrFeed';
 import { parseString } from "xml2js"; 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 // var Flickr = require('flickr-sdk');
 // var XMLParser =require('react-xml-parser');
 >>>>>>> 63dffee... update to base functionality.
 =======
 >>>>>>> 9e4d67d... Added gif of site functionality
+=======
+>>>>>>> 9e4d67d12be0560c431b93c541ee1e85437a099a
 class Search extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             value: null,
+=======
+            searched:"",
+            welcomeText:"Your searched photos will appear here:",
+            user_id: null,
+            flickrImages:null
+>>>>>>> 9e4d67d12be0560c431b93c541ee1e85437a099a
         };
+        this.handleChange =this.handleChange.bind(this);
+        this.getPhotos = this.getPhotos.bind(this);
+        this.checkState = this.checkState.bind(this);
     } 
+<<<<<<< HEAD
 =======
             searchedUsername:"",
 =======
@@ -41,6 +58,8 @@ class Search extends React.Component{
         this.getPhotos = this.getPhotos.bind(this);
         this.checkState = this.checkState.bind(this);
     } 
+=======
+>>>>>>> 9e4d67d12be0560c431b93c541ee1e85437a099a
     
     handleChange(e){
         this.setState({searched:e.target.value});
@@ -99,11 +118,15 @@ class Search extends React.Component{
         e.preventDefault();        
     }
 
+<<<<<<< HEAD
 >>>>>>> 63dffee... update to base functionality.
+=======
+>>>>>>> 9e4d67d12be0560c431b93c541ee1e85437a099a
     render(){
         const imgs = this.state.flickrImages;
         const welcomeText = this.state.welcomeText;
         return(
+<<<<<<< HEAD
 <<<<<<< HEAD
             <form className="search" action="/" method="get">
                 <label htmlFor="header-search">
@@ -119,6 +142,8 @@ class Search extends React.Component{
                 <button className="searchButton" type="submit">Search</button>
             </form>
 =======
+=======
+>>>>>>> 9e4d67d12be0560c431b93c541ee1e85437a099a
             <div>
 
                 <form className="search rounded-bottom row justify-content-center" action="/" method="get">
@@ -149,7 +174,10 @@ class Search extends React.Component{
                 </FlickrFeed>
             </div>
 
+<<<<<<< HEAD
 >>>>>>> 63dffee... update to base functionality.
+=======
+>>>>>>> 9e4d67d12be0560c431b93c541ee1e85437a099a
         )
     }
 }

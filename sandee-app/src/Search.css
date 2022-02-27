@@ -1,5 +1,8 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 9e4d67d12be0560c431b93c541ee1e85437a099a
 .rounded-bottom{
     border-bottom-right-radius: 25px;
     border-bottom-left-radius: 25px;
@@ -9,6 +12,7 @@
 }
 .rounded2{
     border-radius:25px;
+<<<<<<< HEAD
 }
 .search{
     background-color:#252525;
@@ -19,11 +23,21 @@
 }
 <<<<<<< HEAD
 
+=======
+}
+>>>>>>> 9e4d67d12be0560c431b93c541ee1e85437a099a
 .search{
-
+    background-color:#252525;
+}
+.searchInput{
+    color: black;    
+}
+.searchInfoText{
+    color: #fff;
 }
 
 .searchButton{
+<<<<<<< HEAD
     
 =======
 .searchInfoText{
@@ -31,6 +45,8 @@
 }
 
 .searchButton{
+=======
+>>>>>>> 9e4d67d12be0560c431b93c541ee1e85437a099a
     background-color:#fde0dd;
     color:#4292c6;
     margin-left:40px;
@@ -38,5 +54,8 @@
 
 .personalLink{
     color:chartreuse!important;
+<<<<<<< HEAD
 >>>>>>> 9b76eec... cleanup and final project details
+=======
+>>>>>>> 9e4d67d12be0560c431b93c541ee1e85437a099a
 }

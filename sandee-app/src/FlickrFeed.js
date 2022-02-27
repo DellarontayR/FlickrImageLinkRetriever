@@ -1,10 +1,16 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 9e4d67d12be0560c431b93c541ee1e85437a099a
 import React from 'react';
 import './FlickrFeed.css';
 
 
+<<<<<<< HEAD
 >>>>>>> 63dffee... update to base functionality.
+=======
+>>>>>>> 9e4d67d12be0560c431b93c541ee1e85437a099a
 class FlickrFeed extends React.Component{
     constructor(props) {
         super(props);
@@ -15,6 +21,7 @@ class FlickrFeed extends React.Component{
     
     render(){
 <<<<<<< HEAD
+<<<<<<< HEAD
         return(
 
             <div className="container">
@@ -24,6 +31,8 @@ class FlickrFeed extends React.Component{
                         return <div style={this.state.imageSize} className="square">{image}</div>;
                     })}
 =======
+=======
+>>>>>>> 9e4d67d12be0560c431b93c541ee1e85437a099a
         const imgs = this.props.imgs;
         if(imgs){
             return(
@@ -35,11 +44,18 @@ class FlickrFeed extends React.Component{
                                 <div key={image} className="col-lg-6"> <a className="flickrA" href={image} target="_blank" rel="noreferrer">View Image Link</a> <img className='rounded' style={this.state.imageSize}  src={image} alt="Flickr Link"/> </div>]);
                             })}
                         </div>
+<<<<<<< HEAD
 >>>>>>> 63dffee... update to base functionality.
+=======
+>>>>>>> 9e4d67d12be0560c431b93c541ee1e85437a099a
                     </div>
                 </div>
-            </div>
-        )
+            )
+        }
+        else{
+            return null;
+        }
+       
     }
 }
 
