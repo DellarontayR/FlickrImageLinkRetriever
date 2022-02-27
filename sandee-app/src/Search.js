@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 import axios from 'axios';
 import './Search.css';
 import React from 'react';
@@ -8,7 +6,6 @@ import FlickrFeed from './FlickrFeed';
 // import xml2js Module
 import { parseString } from "xml2js"; 
 
->>>>>>> 9e4d67d... Added gif of site functionality
 class Search extends React.Component{
     constructor(props) {
         super(props);
@@ -16,7 +13,6 @@ class Search extends React.Component{
             value: null,
         };
     } 
-<<<<<<< HEAD
     
     handleChange(e){
         this.setState({searched:e.target.value});
@@ -75,24 +71,8 @@ class Search extends React.Component{
         e.preventDefault();        
     }
 
->>>>>>> 9e4d67d... Added gif of site functionality
     render(){
         return(
-<<<<<<< HEAD
-            <form className="search" action="/" method="get">
-                <label htmlFor="header-search">
-                    <span className="searchInfoText">Search flickr photos</span>
-                </label>
-                <input
-                    type="text"
-                    id="header-search"
-                    placeholder="Search flickr photos"
-                    name="s" 
-                    className="searchInput"
-                />
-                <button className="searchButton" type="submit">Search</button>
-            </form>
-=======
             <div>
 
                 <form className="search rounded-bottom row justify-content-center" action="/" method="get">
@@ -123,7 +103,6 @@ class Search extends React.Component{
                 </FlickrFeed>
             </div>
 
->>>>>>> 9e4d67d... Added gif of site functionality
         )
     }
 }
