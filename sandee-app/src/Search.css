@@ -15,11 +15,15 @@
     color: black;    
 }
 .searchInfoText{
-    color: #4292c6;
+    color: #fff;
 }
 
 .searchButton{
     background-color:#fde0dd;
     color:#4292c6;
     margin-left:40px;
+}
+
+.personalLink{
+    color:chartreuse!important;
 }
