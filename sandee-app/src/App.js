@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 
 <<<<<<< HEAD
@@ -22,10 +21,8 @@ function App() {
 =======
 import './Search';
 import './FlickrFeed';
-import FlickrFeed from './FlickrFeed';
 import Search from './Search';
 
-import {FlickrContext,FlickrProvider} from "./FlickrContext";
 
 
 function App() {
