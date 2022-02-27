@@ -83,7 +83,6 @@ class Search extends React.Component{
         const welcomeText = this.state.welcomeText;
         return(
             <div>
-
                 <form className="search rounded-bottom row justify-content-center" action="/" method="get">
                     <label htmlFor="header-search" className='col-md-12'>
                         <span className="searchInfoText rounded">Flickr Image Link Retriever! by <a className="personalLink" href='https://dellarontayr.github.io'>Dellarontay Readus</a> </span>
