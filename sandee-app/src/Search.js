@@ -2,15 +2,10 @@ import axios from 'axios';
 import './Search.css';
 import React from 'react';
 import FlickrFeed from './FlickrFeed';
-
-
   
 // import xml2js Module
 import { parseString } from "xml2js"; 
 
-
-// var Flickr = require('flickr-sdk');
-// var XMLParser =require('react-xml-parser');
 class Search extends React.Component{
     constructor(props) {
         super(props);
@@ -39,16 +34,6 @@ class Search extends React.Component{
         let getFlickrImageURL = function(photo) {
    
             let url = `https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`;
-
-
-            // let url = `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${
-            //   photo.secret
-            // }`;
-            // if (size) {
-            //   // Configure image size
-            //   url += `_${size}`;
-            // }
-            // url += '.jpg';
             return url;
         };
         const searched = this.state.searched;
@@ -56,23 +41,6 @@ class Search extends React.Component{
         console.log(searched);
         const url =`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${process.env.REACT_APP_FLICKR_KEY}&tags=${searched}`;
         var self = this;
-
-        // Flickr sdk api call
-        // var flickr = new Flickr(process.env.REACT_APP_FLICKR_KEY);
-        // flickr.photos.search({
-        // text: "Dellarontay"
-        // }).then(function (res) {
-        // console.log('Flickr photos retrieved', res.body);
-        // var imgs= res.body.photos.photo.map((photo) => {
-        //     return getFlickrImageURL(photo, 'q');
-        // }).then(()=>{
-        //     console.log(imgs);
-        //     self.setState({flikrImages:imgs});
-        // });
-
-        // }).catch(function (err) {
-        // console.error('Error retrieving Flikr photos', err);
-        // });
 
         // Axios api call
         axios.get(url).then(response=>{
@@ -131,7 +99,6 @@ class Search extends React.Component{
                     <div className='col-md-12'>
                         <button className="searchButton rounded" type="submit" onClick={this.getPhotos}>Search</button>
                     </div>
-                    {/* <button onClick={this.checkState}>check State</button> */}
                 </form>
                 
                 <div className='container justify-content-center'>
