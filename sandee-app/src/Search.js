@@ -10,9 +10,16 @@ class Search extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            value: null,
+            searched:"",
+            welcomeText:"Your searched photos will appear here:",
+            user_id: null,
+            flickrImages:null
         };
+        this.handleChange =this.handleChange.bind(this);
+        this.getPhotos = this.getPhotos.bind(this);
+        this.checkState = this.checkState.bind(this);
     } 
+
     
     handleChange(e){
         this.setState({searched:e.target.value});
@@ -72,6 +79,8 @@ class Search extends React.Component{
     }
 
     render(){
+        const imgs = this.state.flickrImages;
+        const welcomeText = this.state.welcomeText;
         return(
             <div>
 

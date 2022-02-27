@@ -1,24 +1,36 @@
+
+import React from 'react';
+import './FlickrFeed.css';
 class FlickrFeed extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            flickrImages: null,
-            imageSize: {width:'100px',height:'100px'}
+            imageSize: {width:'200px',height:'200px'}
         };
     } 
+    
     render(){
-        return(
+        const imgs = this.props.imgs;
 
-            <div className="container">
-                <div className="row">
-                    <div className="col-4">
-                    {this.state.flickrImages.map((image) => {
-                        return <div style={this.state.imageSize} className="square">{image}</div>;
-                    })}
+
+        if(imgs){
+            return(
+                <div className="container">
+                    <div className="flickrImage">
+                        <div className="row">
+                            {imgs.map((image) => {
+                                return ([ 
+                                <div key={image} className="col-lg-6"> <a className="flickrA" href={image} target="_blank" rel="noreferrer noopener">View Image Link</a> <img className='rounded' style={this.state.imageSize}  src={image} alt="Flickr Link"/> </div>]);
+                            })}
+                        </div>
                     </div>
                 </div>
-            </div>
-        )
+            )
+        }
+        else{
+            return null;
+        }
+       
     }
 }
 
