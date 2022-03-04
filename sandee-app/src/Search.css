@@ -1,32 +1,36 @@
 
-.rounded-bottom{
-    border-bottom-right-radius: 25px;
-    border-bottom-left-radius: 25px;
+.padded{
     padding: 20px;
 }
 
 .search{
-    background-color:#252525;
+    /* background-color:; */
+    color:#252525;
 }
 .searchInput{
     color: black;    
     text-align: center;
 }
-.searchInfoText{
-    color: #fff;
-}
-
-.searchInfoText{
-    color: #fff;
-}
 
 .searchButton{
     background-color:#fde0dd;
     color:#4292c6;
-    margin-left:40px;
+    margin-top:20px;
 }
 
 .personalLink{
-    color:chartreuse!important;
+    font-weight: bold;
+}
 
+.searchInfoText{
+    font-weight:bold;
+}
+
+.searchHeader{
+    margin:0;
+}
+
+.addPhoto{
+    margin-top:10px;
+    margin-bottom:10px;
 }

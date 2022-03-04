@@ -8,4 +8,14 @@
 
 .flickrA{
     display:block;
+    color:#252525;
+}
+
+.base{
+    background-color: #252525;
+}
+
+.card{
+    margin-top:10px;
+    margin-bottom:10px;
 }

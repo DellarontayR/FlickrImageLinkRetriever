@@ -5,7 +5,7 @@ class FlickrFeed extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            imageSize: {width:'200px',height:'200px'}
+            imageSize: {height:'400px'}
         };
     } 
     
@@ -15,12 +15,22 @@ class FlickrFeed extends React.Component{
 
         if(imgs){
             return(
-                <div className="container">
-                    <div className="flickrImage">
+                <div className='base'>
+                    <div className="container">
                         <div className="row">
                             {imgs.map((image) => {
                                 return ([ 
-                                <div key={image} className="col-lg-6"> <a className="flickrA" href={image} target="_blank" rel="noreferrer noopener">View Image Link</a> <img className='rounded' style={this.state.imageSize}  src={image} alt="Flickr Link"/> </div>]);
+                                    <div key={image} className='col-lg-6'>
+                                        <div className="card">
+                                            <div>
+                                            <img className="card-img-top" src={image} alt="Flickr Link" style={this.state.imageSize}/>
+                                            </div>
+                                            <div className='card-body centered'>
+                                                <a className='flickA' href={image} rel="noreferrer noopener">View Image Link</a>
+                                            </div>
+                                        </div>
+                                    </div>]);
+
                             })}
                         </div>
                     </div>

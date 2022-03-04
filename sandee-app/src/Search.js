@@ -13,11 +13,13 @@ class Search extends React.Component{
             searched:"",
             welcomeText:"Your searched photos will appear here:",
             user_id: null,
-            flickrImages:null
+            flickrImages:null,
+            allPhotos: null
         };
         this.handleChange =this.handleChange.bind(this);
         this.getPhotos = this.getPhotos.bind(this);
         this.checkState = this.checkState.bind(this);
+        this.addPhotos = this.addPhotos.bind(this);
     } 
 
     
@@ -29,6 +31,25 @@ class Search extends React.Component{
     checkState(e){
         console.log(this.state);
         e.preventDefault();        
+    }
+
+    addPhotos(e){
+        let getFlickrImageURL = function(photo) {
+   
+            let url = `https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`;
+            return url;
+        };
+
+        const imgs = this.state.allPhotos.slice(0,this.state.allPhotos.length>=10? 10: this.state.allPhotos.length).map((photo)=>{
+            return getFlickrImageURL(photo.$);
+        });
+        let finalImages = this.state.flickrImages.concat(imgs);
+        this.setState({flickrImages:finalImages});
+
+        this.setState({allPhotos:this.state.allPhotos.slice(this.state.allPhotos.length>=10? 10 :0,this.state.allPhotos.length)});
+
+
+        e.preventDefault();
     }
 
     getPhotos(e){
@@ -54,13 +75,17 @@ class Search extends React.Component{
                 else{
                     if(results.rsp.photos[0].photo){
                         photos= results.rsp.photos[0].photo;
-                        photos = photos.slice(0, photos.length>=10? 10 :photos.length);
 
-                        const imgs = photos.map((photo)=>{
+                        let firstPhotos = photos.slice(0, photos.length>=10? 10 :photos.length);
+                        self.setState({allPhotos:photos.slice(photos.length>=10? 10 :0,photos.length)});
+
+
+                        const imgs = firstPhotos.map((photo)=>{
                             return getFlickrImageURL(photo.$);
                         });
         
                         self.setState({flickrImages:imgs});
+
                         const message = "Here are your images!";
                         self.setState({welcomeText:message});
     
@@ -83,7 +108,7 @@ class Search extends React.Component{
         const welcomeText = this.state.welcomeText;
         return(
             <div>
-                <form className="search rounded-bottom row justify-content-center" action="/" method="get">
+                <form className="search padded row justify-content-center searchHeader" action="/" method="get">
                     <label htmlFor="header-search" className='col-md-12'>
                         <span className="searchInfoText rounded">Flickr Image Link Retriever! by <a className="personalLink" href='https://dellarontayr.github.io'>Dellarontay Readus</a> </span>
                     </label>
@@ -101,14 +126,23 @@ class Search extends React.Component{
                     </div>
                 </form>
                 
-                <div className='container justify-content-center'>
-                    <h1>{welcomeText} </h1>
+                <div className='welcomeBox'>
+                    <div className='container justify-content-center'>
+                        <h1>{welcomeText} </h1>
+                    </div>
                 </div>
+                
                 
 
                 <FlickrFeed imgs={imgs}>
 
                 </FlickrFeed>
+
+                {imgs != null && 
+                <btn className='btn btn-dark addPhoto' onClick={this.addPhotos}>
+                    Add More Photos?
+                </btn>}
+                
             </div>
 
         )
